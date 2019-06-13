@@ -15,7 +15,7 @@ public class CRacer implements Callable<Integer> {
     public Integer call() throws Exception {
         for(int steps=1;steps<=100;steps++){
             //模拟休息
-            if(Thread.currentThread().getName().equals("rabbit") && steps%10==0){
+            if(Thread.currentThread().getName().equals("pool-1-thread-1") && steps%10==0){
                 Thread.sleep(100);
             }
             System.out.println(Thread.currentThread().getName()+"-->"+steps);
@@ -56,7 +56,9 @@ public class CRacer implements Callable<Integer> {
 
        Integer r1 =result1.get();
         Integer r2 =result2.get();
+        System.out.println(r1+","+r2);
         //关闭服务
+
         ser.shutdownNow();
     }
 }
